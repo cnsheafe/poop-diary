@@ -9,6 +9,7 @@
     "pkgs/*"
   ],
   "scripts": {
-    "api:dev": "yarn workspace api run dev"
+    "api:dev": "yarn workspace api run dev",
+    "api:test": "yarn workspace api run jest"
   }
 }
