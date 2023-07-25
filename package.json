@@ -1,0 +1,14 @@
+{
+  "name": "poop-diary",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "pkgs/*"
+  ],
+  "scripts": {
+    "api:dev": "yarn workspace api run dev"
+  }
+}
