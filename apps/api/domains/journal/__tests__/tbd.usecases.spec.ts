@@ -17,6 +17,6 @@ describe("addPoopToJournal", () => {
     const result = await addPoopToJournal(poop, 1)(env)
 
     expect(result.result_type).toBe('add_poop_to_journal_success')
-    expect(env.journalRepo.addPoop).toHaveBeenCalled();
+    expect(env.journalRepo.addPoop).toHaveBeenCalledWith(poop, 1);
   })
 })

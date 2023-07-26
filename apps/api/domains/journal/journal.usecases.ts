@@ -4,9 +4,7 @@ import { Poop, Journal } from './journal.models'
 
 interface AddPoopToJournalSuccess {
   result_type: "add_poop_to_journal_success",
-  payload: {
-    
-  }
+  payload: Poop
 }
 
 interface AddPoopToJournalFailure {
@@ -19,17 +17,18 @@ interface AddPoopToJournalFailure {
 
 type AddPoopToJournalResult = AddPoopToJournalSuccess | AddPoopToJournalFailure
 export interface JournalEnv {
-  journalRepo: JournalRepo
+  journalRepo: JournalRepo,
 }
+
 
 export const addPoopToJournal = (poop: Poop, journalId: number): (env: JournalEnv) => Promise<AddPoopToJournalResult> => {
   return async ({ journalRepo }) => {
   try {
-    await journalRepo.addPoop({ journalId, poop })
+    const newPoop = await journalRepo.addPoop(poop, journalId)
 
     return {
       result_type: 'add_poop_to_journal_success',
-      payload: {}
+      payload: newPoop
     }
   } catch(error) {
     return {
