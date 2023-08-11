@@ -1,5 +1,5 @@
 import {Kysely} from "kysely";
-import {Database, db, NewPoop, SelectPoop} from ".";
+import {Database, db, NewPoop} from ".";
 import {Poop} from "../domains/journal/journal.models";
 
 export interface JournalRepo {
@@ -8,7 +8,7 @@ export interface JournalRepo {
 
 
 export class JournalRepoImpl implements JournalRepo {
-  private db: Kysely<Database>; 
+  private db: Kysely<Database>;
   public constructor() {
     this.db = db
   }
@@ -25,7 +25,7 @@ export class JournalRepoImpl implements JournalRepo {
       .values(poopDb)
       .returningAll()
       .executeTakeFirstOrThrow()
-      
+
     return {
       consistency: result.consistency,
       date_time_iso: result.date_time_iso,
